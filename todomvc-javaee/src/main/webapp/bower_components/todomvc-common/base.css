@@ -174,7 +174,7 @@ label[for='toggle-all'] {
 	color: #737373;
 }
 
-.todo-list {
+.todo-list ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -250,7 +250,7 @@ label[for='toggle-all'] {
 	transition: color 0.4s;
 }
 
-.todo-list li.completed label, .todo-list li.completed .label {
+.todo-list .completed label, .todo-list .completed .label {
 	color: #a9a9a9;
 	text-decoration: line-through;
 }
