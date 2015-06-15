@@ -29,8 +29,8 @@
                         <h:panelGroup id="todos">
                             <p:dataList value="#{app.todos}" var="todo" styleClass="todo-list" >
                                 <h:panelGroup id="todo" layout="block" styleClass="#{todo.completed ? 'completed' : ''}">
-                                    <h:selectBooleanCheckbox value="#{todo.completed}" styleClass="toggle">
-                                        <p:ajax update="todo"/>
+                                    <h:selectBooleanCheckbox value="#{todo.completed}" styleClass="toggle" >
+                                        <p:ajax />
                                     </h:selectBooleanCheckbox>
                                     <p:inplace editor="true" styleClass="label" event="dblclick">
                                         <p:inputText value="#{todo.title}">
@@ -40,6 +40,73 @@
                             </p:dataList>
                         </h:panelGroup>
                     </h:form>
+
+                    <h:form>
+                        <p:panelGrid>
+                            <p:row>
+                                <p:column colspan="4">
+                                    <p:inputText id="input" value="#{calculator.data}" />                                     
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:commandButton value="7" action="#{calculator.number(7)}" update="input">
+                                    </p:commandButton>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="8" action="#{calculator.number(8)}" update="input"></p:commandButton>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="9" action="#{calculator.number(9)}" update="input"></p:commandButton>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="/" action="#{calculator.divide()}" update="input"></p:commandButton>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:commandButton value="4" action="#{calculator.number(4)}" update="input"></p:commandButton>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="5" action="#{calculator.number(5)}" update="input"></p:commandButton>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="6" action="#{calculator.number(6)}" update="input"></p:commandButton>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="*" action="#{calculator.multiply()}" update="input"></p:commandButton>
+                                </p:column>
+
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:commandButton value="1" action="#{calculator.number(1)}" update="input"></p:commandButton>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="2" action="#{calculator.number(2)}" update="input"></p:commandButton>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="3" action="#{calculator.number(3)}" update="input"></p:commandButton>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="+" action="#{calculator.plus()}" update="input"></p:commandButton>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:commandButton value="0" action="#{calculator.number(0)}" update="input"></p:commandButton>
+                                </p:column>
+                                <p:column>
+                                </p:column>
+                                <p:column>
+                                </p:column>
+                                <p:column>
+                                </p:column>
+
+
+                            </p:row>
+                        </p:panelGrid>
+                    </h:form> 
 
                 </section>
             </section>
