@@ -27,12 +27,10 @@ public class Application {
     @Valid
     private List<TodoItem> todos;
             
-    @PostConstruct
-    public void construct() {
-        todos = repository.getAllTodos();
-    }
-    
     public List<TodoItem> getTodos() {
+        if (todos == null) {
+            todos = repository.getAllTodos();
+        }
         return todos;
     }
     

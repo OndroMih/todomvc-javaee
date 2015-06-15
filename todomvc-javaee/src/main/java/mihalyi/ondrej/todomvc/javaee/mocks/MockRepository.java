@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import javax.enterprise.inject.Alternative;
 import mihalyi.ondrej.todomvc.javaee.Mocked;
 import mihalyi.ondrej.todomvc.javaee.Repository;
 import mihalyi.ondrej.todomvc.javaee.TodoItem;
@@ -15,6 +14,7 @@ import mihalyi.ondrej.todomvc.javaee.TodoItem;
  * @author ondro
  */
 @SessionScoped
+@Mocked
 public class MockRepository implements Repository, Serializable {
 
     List<TodoItem> todos;
