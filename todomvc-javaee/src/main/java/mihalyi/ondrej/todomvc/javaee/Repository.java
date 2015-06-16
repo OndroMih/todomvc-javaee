@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface Repository {
     public List<TodoItem> getAllTodos();
+    public void store(TodoItem item);
 }

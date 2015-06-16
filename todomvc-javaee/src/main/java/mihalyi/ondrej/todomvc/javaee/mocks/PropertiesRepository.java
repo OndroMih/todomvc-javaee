@@ -16,11 +16,13 @@ import mihalyi.ondrej.todomvc.javaee.TodoItem;
  * @author ondro
  */
 @Alternative
-public class PropertiesRepository implements Repository {
+public abstract class PropertiesRepository implements Repository {
 
     @Override
     public List<TodoItem> getAllTodos() {
         return new ArrayList<>();
     }
+
+    public abstract void store(TodoItem item);
     
 }
