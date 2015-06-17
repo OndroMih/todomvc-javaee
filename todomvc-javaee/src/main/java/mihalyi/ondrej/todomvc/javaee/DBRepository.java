@@ -1,50 +1,40 @@
 package mihalyi.ondrej.todomvc.javaee;
 
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
+import javax.ejb.Stateless;
+import javax.enterprise.inject.Default;
+import javax.inject.Inject;
 
-@Transactional(Transactional.TxType.REQUIRED)
-public class DBRepository implements Repository {
-    @PersistenceContext(name = "todos")
-    EntityManager em;
+@Stateless
+public class DBRepository implements Repository, RemoteRepository {
+    @Inject
+    private TodoDBAccess todoDbAccess;
+    
+    @Inject
+    private Processor processor;
     
     @Override
     public List<TodoItem> getAllTodos() {
-        TypedQuery<TodoItem> query = em.createNamedQuery("allTodoItems", TodoItem.class);
-        return query.getResultList();
+        List<TodoItem> allTodosWithContent = todoDbAccess.getAllTodos();
+        todoDbAccess.getAllTodos();
+        filter(allTodosWithContent);
+        return allTodosWithContent;
     }
-    
-    public List<TodoItem> getAllTodosWithContent() {
-        TypedQuery<TodoItem> query = em.createNamedQuery("allTodoItemsWith", TodoItem.class);
-        return query.getResultList();
-    }
-    
-    public static class Result {
-        TodoItem item;
-        TodoNote content;
 
-        public Result(TodoItem item, TodoNote content) {
-            this.item = item;
-            this.content = content;
+    @Override
+    public void store(TodoItem item) {
+        if (valid(item)) {
+            todoDbAccess.store(item);
+            processor.process();
         }
         
     }
 
-    public void store(TodoItem item) {
-        if (itemExistsInDB(item)) {
-            em.merge(item);
-        } else {
-            em.persist(item);
-        }
+    private void filter(List<TodoItem> allTodosWithContent) {
     }
 
-    protected boolean itemExistsInDB(TodoItem item) {
-        return item.getId() != null && (null != em.find(TodoItem.class, item.getId()));
+    private boolean valid(TodoItem item) {
+        return true;
     }
-    
     
 }

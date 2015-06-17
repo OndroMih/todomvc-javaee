@@ -9,7 +9,6 @@ package mihalyi.ondrej.todomvc.javaee;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.Valid;

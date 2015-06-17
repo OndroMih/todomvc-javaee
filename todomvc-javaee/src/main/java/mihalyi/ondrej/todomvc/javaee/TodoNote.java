@@ -8,12 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author ondro
  */
 @Entity
+@Table(name = "TODOCONTENT")
 public class TodoNote implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
