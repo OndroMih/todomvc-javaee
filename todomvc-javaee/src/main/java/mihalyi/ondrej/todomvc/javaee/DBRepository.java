@@ -1,12 +1,12 @@
 package mihalyi.ondrej.todomvc.javaee;
 
 import java.util.List;
+import javax.ejb.Local;
 import javax.ejb.Stateless;
-import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 
 @Stateless
-public class DBRepository implements Repository, RemoteRepository {
+public class DBRepository implements Repository {
     @Inject
     private TodoDBAccess todoDbAccess;
     
