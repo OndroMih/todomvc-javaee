@@ -30,7 +30,7 @@ import org.eclipse.persistence.annotations.CloneCopyPolicy;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "allTodoItems", query = "select t from TodoItem t"),
-    @NamedQuery(name = "allTodoItemsWith", query = "select t from TodoItem t join fetch t.notes")
+    @NamedQuery(name = "allTodoItemsWith", query = "select t from TodoItem t left join fetch t.notes")
 })
 @Table(name = "TODO_ITEM")
 public class TodoItem implements Serializable {

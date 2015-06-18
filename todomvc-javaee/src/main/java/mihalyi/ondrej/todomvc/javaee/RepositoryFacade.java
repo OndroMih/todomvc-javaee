@@ -20,7 +20,7 @@ public class RepositoryFacade {
     @Inject
     DBRepository repo;
 
-    void store(TodoItem item) {
+    public void store(TodoItem item) {
         if (v.validate(v)) {
             repo.store(item);
         }

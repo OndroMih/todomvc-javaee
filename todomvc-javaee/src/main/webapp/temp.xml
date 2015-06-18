@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<partial-response id="j_id1">
+ <changes>
+  <update id="j_id1:javax.faces.ViewState:0"><![CDATA[3265040586535236201:-809688507333219197]]></update>
+  <extension ln="primefaces" type="args">{"validationFailed":true}</extension>
+ </changes>
+</partial-response>
