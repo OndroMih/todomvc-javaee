@@ -8,6 +8,7 @@ package mihalyi.ondrej.todomvc.javaee;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -17,12 +18,12 @@ import javax.validation.Valid;
  *
  * @author ondro
  */
-@SessionScoped
+@RequestScoped
 @Named("app")
 public class Application implements Serializable {
 
     @Inject
-    transient
+    
     private Repository repository;
     
     @Valid
@@ -35,10 +36,12 @@ public class Application implements Serializable {
         return todos;
     }
     
-    public TodoItem createNew() {
+    public void createNew() {
         TodoItem item = new TodoItem();
+        item.setTitle("Dopln...");
+        item.setId(repository.getAllTodos().size() + 1L);
         repository.store(item);
-        return item;
+        todos.add(item);
     }
     
     public void save(TodoItem todo) {

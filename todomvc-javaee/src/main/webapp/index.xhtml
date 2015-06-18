@@ -27,7 +27,7 @@
                 <section id="main">
                     <h:form id="form">
                         <h:panelGroup id="todos">
-                            <p:dataList value="#{app.todos}" var="todo" styleClass="todo-list" >
+                            <p:dataList id="todoList" value="#{app.todos}" var="todo" styleClass="todo-list" >
                                 <h:panelGroup id="todo" layout="block" styleClass="#{todo.completed ? 'completed' : ''}">
                                     <h:selectBooleanCheckbox value="#{todo.completed}" styleClass="toggle" >
                                         <p:ajax listener="#{app.save(todo)}" update="todo"/>
@@ -39,9 +39,11 @@
                                     </p:inplace>
                                 </h:panelGroup>
                             </p:dataList>
+                            <p:commandButton value="Vytvor nove TODO" action="#{app.createNew()}" 
+                                             update="todoList" process="@this"/>
                         </h:panelGroup>
                     </h:form>
-
+                    
                     <h:form>
                         <p:panelGrid>
                             <p:row>
