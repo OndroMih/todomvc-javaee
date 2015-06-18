@@ -14,8 +14,7 @@ import mihalyi.ondrej.todomvc.javaee.TodoItem;
  * @author ondro
  */
 @SessionScoped
-@Mocked
-public abstract class MockRepository implements Repository, Serializable {
+public class MockRepository implements Repository, Serializable {
 
     List<TodoItem> todos;
     
@@ -32,6 +31,8 @@ public abstract class MockRepository implements Repository, Serializable {
         return todos;
     }
 
-    public abstract void store(TodoItem item);
+    public void store(TodoItem item) {
+        
+    };
 
 }

@@ -5,22 +5,31 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 @Stateless
-public class DBRepository implements Repository {
+public class DBRepository {
     @Inject
-    private TodoDBAccess todoDbAccess;
+    private TodoDAO todoDbAccess;
     
     @Inject
     private Processor processor;
     
-    @Override
-    public List<TodoItem> getAllTodos() {
-        List<TodoItem> allTodosWithContent = todoDbAccess.getAllTodos();
+    public List<TodoItem> getAllTodos(boolean fetchDetails) {
+        List<TodoItem> allTodos;
+        if  (fetchDetails) {
+            allTodos = todoDbAccess.getAllTodosWithContent();
+        } else {
+            allTodos = todoDbAccess.getAllTodos();
+        }
         todoDbAccess.getAllTodos();
-        filter(allTodosWithContent);
-        return allTodosWithContent;
+        filter(allTodos);
+        return allTodos;
+    }
+    
+    public TodoItem getNoteCount(TodoItem i) {
+        TodoItem item = todoDbAccess.store(i);
+        item.setNotesCount(item.getNotes().size());
+        return item;
     }
 
-    @Override
     public void store(TodoItem item) {
         if (valid(item)) {
             todoDbAccess.store(item);

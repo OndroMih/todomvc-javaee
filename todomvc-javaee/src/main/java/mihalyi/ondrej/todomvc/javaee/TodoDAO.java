@@ -14,7 +14,7 @@ import javax.persistence.TypedQuery;
  *
  * @author ondro
  */
-public class TodoDBAccess {
+public class TodoDAO {
     @PersistenceContext(name = "todos")
     EntityManager em;
     
@@ -39,11 +39,13 @@ public class TodoDBAccess {
         
     }
 
-    public void store(TodoItem item) {
+    public TodoItem store(TodoItem item) {
         if (itemExistsInDB(item)) {
-            em.merge(item);
+            return em.merge(item);
         } else {
+            item.setId(getAllTodos().size() + 1L);        
             em.persist(item);
+            return item;
         }
     }
 
