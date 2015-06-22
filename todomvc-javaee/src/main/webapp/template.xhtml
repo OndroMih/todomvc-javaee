@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+ <h:head>
+  <title>Template</title>
+ </h:head>
+ <h:body>
+  <h:panelGroup layout="block" style="height: 20px; background-color: blue; width: 100%">
+   Aplikacia TODO
+  </h:panelGroup>
+  HEADER
+  <div style="border: 1px solid black">
+  <ui:insert name="header">
+    Toto je nadpis stranky
+  </ui:insert>
+   </div>
+  <div style="padding: 40px">
+  <ui:insert name="body" >
+    Toto je obsah stranky
+  </ui:insert>
+  </div>
+  <div style="border: 1px solid black">
+  <ui:insert name="nastroje" >
+    Toto su nastroje
+  </ui:insert>
+   </div>
+ </h:body>
+</html>
+

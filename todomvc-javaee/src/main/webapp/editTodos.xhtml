@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+ <h:head>
+  <title>Edit mode</title>
+ </h:head>
+ <h:body>
+  <ui:composition template="todos.xhtml">
+   <ui:define name="editTodos">
+    <p:outputPanel id="createTodoPanel" autoUpdate="true">
+        <p:commandButton rendered="#{not app.creatingTodo}" value="Vytvor..." action="#{app.createNew()}" process="@this" 
+                         />
+         <p:outputPanel rendered="#{app.creatingTodo}">
+          <p:outputLabel value="Nadpis:" for="newTitle"/>
+          <p:inputText id="newTitle" value="#{app.title}" 
+                       required="true" requiredMessage="Povinne pole!" 
+                       >
+          </p:inputText>
+          <p:commandButton value="Uloz" validateClient="true" actionListener="#{app.saveNew()}" 
+                         />
+         <p:commandButton value="Zrus" actionListener="#{app.cancel()}" process="@this"
+                         />
+         </p:outputPanel>
+       </p:outputPanel>
+   </ui:define>
+  </ui:composition>
+ </h:body>
+</html>
+

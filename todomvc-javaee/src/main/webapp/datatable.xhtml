@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:custom="http://xmlns.jcp.org/jsf/composite/custom"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+ <h:head>
+  <title>Moja stranka</title>
+ </h:head>
+ <h:body>
+  <p:dataTable id="basic" rendered="false" value="#{source.data}" var="row">
+   <p:column headerText="NAME" sortBy="#{row.name}">
+    <p:inputText value="#{row.name}"/>
+   </p:column>
+   <p:column headerText="SIZE">
+    #{row.size}
+   </p:column>
+  </p:dataTable>
+  
+  <p:dataTable id="livescroll" rendered="true" value="#{source.data}" var="row" 
+               scrollRows="1000" scrollable="true" liveScroll="true" scrollHeight="500">
+   <p:column headerText="NAME">
+    #{row.name}
+   </p:column>
+   <p:column headerText="SIZE">
+    #{row.size}
+   </p:column>
+  </p:dataTable>
+  
+  <p:dataTable id="search" rendered="false" value="#{source.data}" var="row" widgetVar="dataTable" emptyMessage="No cars found with given criteria" >
+   <p:column headerText="NAME" filterBy="#{row.name}" filterMatchMode="contains">
+    #{row.name}
+   </p:column>
+  </p:dataTable>
+ </h:body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

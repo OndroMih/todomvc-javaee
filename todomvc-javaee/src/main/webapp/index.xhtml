@@ -1,143 +1,16 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-
- <f:view contentType="text/html">
-  <h:head>
-   <f:facet name="first">
-    <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>Template • TodoMVC</title>
-    <link rel="stylesheet" href="bower_components/todomvc-common/base.css"/>
-    <!-- CSS overrides - remove if you don't need it -->
-    <link rel="stylesheet" href="css/app.css"/>
-   </f:facet>
-  </h:head>
-
-  <h:body>
-
-   <section id="todoapp">
-    <header id="header">
-     <h1>todos</h1>
-    </header>
-    <section id="main">
-     <h:form id="form">
-      <p:messages autoUpdate="true"/>
-      <h:outputText value="#{app.now}" >
-       <f:convertDateTime pattern="yyyy"/>
-      </h:outputText>
-      <h:panelGroup id="todos">
-       <p:outputPanel id="todoPanel" autoUpdate="true">
-       <p:dataList id="todoList" value="#{app.todos}" var="todo" styleClass="todo-list" >
-        <h:panelGroup id="todo" layout="block" styleClass="#{todo.completed ? 'completed' : ''}">
-         <h:selectBooleanCheckbox value="#{todo.completed}" styleClass="toggle" >
-          <p:ajax listener="#{app.save(todo)}" update="todo"/>
-         </h:selectBooleanCheckbox>
-         <p:inplace editor="true" styleClass="label" event="click">
-          <p:inputText value="#{todo.title}">
-          </p:inputText>
-          <p:ajax event="save" listener="#{app.save(todo)}"/>
-         </p:inplace>
-        </h:panelGroup>
-       </p:dataList>
-       </p:outputPanel>
-          <p:commandButton value="Uloz" validateClient="true" actionListener="#{app.saveNew()}" ignoreAutoUpdate="true" 
-                         />
-       <p:outputPanel id="createTodoPanel" autoUpdate="true">
-        <p:commandButton rendered="#{not app.creatingTodo}" value="Vytvor..." actionListener="#{app.createNew()}" process="@this" 
-                         />
-         <p:outputPanel rendered="#{app.creatingTodo}">
-          <p:outputLabel value="Nadpis:" for="newTitle"/>
-          <p:inputText id="newTitle" value="#{app.title}" 
-                       required="true" requiredMessage="Povinne pole!" 
-                       >
-          </p:inputText>
-          <p:commandButton value="Uloz" validateClient="true" actionListener="#{app.saveNew()}" 
-                         />
-         <p:commandButton value="Zrus" actionListener="#{app.cancel()}" process="@this"
-                         />
-         </p:outputPanel>
-       </p:outputPanel>
-      </h:panelGroup>
-     </h:form>
-
-     <h:form>
-      <p:panelGrid>
-       <p:row>
-        <p:column colspan="4">
-         <p:inputText id="input" value="#{calculator.data}" />                                     
-        </p:column>
-       </p:row>
-       <p:row>
-        <p:column>
-         <p:commandButton value="7" action="#{calculator.number(7)}" update="input">
-         </p:commandButton>
-        </p:column>
-        <p:column>
-         <p:commandButton value="8" action="#{calculator.number(8)}" update="input"></p:commandButton>
-        </p:column>
-        <p:column>
-         <p:commandButton value="9" action="#{calculator.number(9)}" update="input"></p:commandButton>
-        </p:column>
-        <p:column>
-         <p:commandButton value="/" action="#{calculator.divide()}" update="input"></p:commandButton>
-        </p:column>
-       </p:row>
-       <p:row>
-        <p:column>
-         <p:commandButton value="4" action="#{calculator.number(4)}" update="input"></p:commandButton>
-        </p:column>
-        <p:column>
-         <p:commandButton value="5" action="#{calculator.number(5)}" update="input"></p:commandButton>
-        </p:column>
-        <p:column>
-         <p:commandButton value="6" action="#{calculator.number(6)}" update="input"></p:commandButton>
-        </p:column>
-        <p:column>
-         <p:commandButton value="*" action="#{calculator.multiply()}" update="input"></p:commandButton>
-        </p:column>
-
-       </p:row>
-       <p:row>
-        <p:column>
-         <p:commandButton value="1" action="#{calculator.number(1)}" update="input"></p:commandButton>
-        </p:column>
-        <p:column>
-         <p:commandButton value="2" action="#{calculator.number(2)}" update="input"></p:commandButton>
-        </p:column>
-        <p:column>
-         <p:commandButton value="3" action="#{calculator.number(3)}" update="input"></p:commandButton>
-        </p:column>
-        <p:column>
-         <p:commandButton value="+" action="#{calculator.plus()}" update="input"></p:commandButton>
-        </p:column>
-       </p:row>
-       <p:row>
-        <p:column>
-         <p:commandButton value="0" action="#{calculator.number(0)}" update="input"></p:commandButton>
-        </p:column>
-        <p:column>
-        </p:column>
-        <p:column>
-        </p:column>
-        <p:column>
-        </p:column>
-
-
-       </p:row>
-      </p:panelGrid>
-     </h:form> 
-
-    </section>
-   </section>
-  </h:body>
-
- </f:view>
+ <h:head>
+  <title>Template</title>
+ </h:head>
+ <h:body>
+  <h:outputLink value="faces/todos.xhtml">TODOs</h:outputLink><br/>
+  <h:outputLink value="faces/page.xhtml">Demo Page</h:outputLink><br/>
+  <h:outputLink value="faces/datatable.xhtml">Datatable</h:outputLink><br/>
+ </h:body>
 </html>
-
-
 

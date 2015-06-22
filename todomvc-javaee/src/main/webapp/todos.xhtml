@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+ <f:view contentType="text/html">
+  <h:head>
+   <f:facet name="first">
+    <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Template • TodoMVC</title>
+    <link rel="stylesheet" href="bower_components/todomvc-common/base.css"/>
+    <!-- CSS overrides - remove if you don't need it -->
+    <link rel="stylesheet" href="css/app.css"/>
+   </f:facet>
+  </h:head>
+
+  <h:body>
+   
+   <ui:composition template="template.xhtml">
+    <ui:define name="header">
+     <h:form>
+           <p:messages autoUpdate="true"/>
+     </h:form>
+    </ui:define>
+    
+    <ui:define name="body">
+     <h:form id="form">
+      <h:outputText value="#{app.now}" >
+       <f:convertDateTime pattern="yyyy"/>
+      </h:outputText>
+      <ui:include src="displayText.xhtml"></ui:include>
+     </h:form>
+    </ui:define>
+
+    <ui:define name="nastroje">
+     <h:form>
+      <p:panelGrid>
+       <p:row>
+        <p:column colspan="4">
+         <p:inputText id="input" value="#{calculator.data}" />                                     
+        </p:column>
+       </p:row>
+       <p:row>
+        <p:column>
+         <ui:include src="calcButton.xhtml">
+          <ui:param name="value" value="7"/>
+          <ui:param name="number" value="#{7}"/>
+         </ui:include>
+         <app:calcButton value="7" number="#{7}"/>
+        </p:column>
+        <p:column>
+         <p:commandButton value="8" action="#{calculator.number(8)}" update="input"></p:commandButton>
+        </p:column>
+        <p:column>
+         <p:commandButton value="9" action="#{calculator.number(9)}" update="input"></p:commandButton>
+        </p:column>
+        <p:column>
+         <p:commandButton value="/" action="#{calculator.divide()}" update="input"></p:commandButton>
+        </p:column>
+       </p:row>
+       <p:row>
+        <p:column>
+         <p:commandButton value="4" action="#{calculator.number(4)}" update="input"></p:commandButton>
+        </p:column>
+        <p:column>
+         <p:commandButton value="5" action="#{calculator.number(5)}" update="input"></p:commandButton>
+        </p:column>
+        <p:column>
+         <p:commandButton value="6" action="#{calculator.number(6)}" update="input"></p:commandButton>
+        </p:column>
+        <p:column>
+         <p:commandButton value="*" action="#{calculator.multiply()}" update="input"></p:commandButton>
+        </p:column>
+
+       </p:row>
+       <p:row>
+        <p:column>
+         <p:commandButton value="1" action="#{calculator.number(1)}" update="input"></p:commandButton>
+        </p:column>
+        <p:column>
+         <p:commandButton value="2" action="#{calculator.number(2)}" update="input"></p:commandButton>
+        </p:column>
+        <p:column>
+         <p:commandButton value="3" action="#{calculator.number(3)}" update="input"></p:commandButton>
+        </p:column>
+        <p:column>
+         <p:commandButton value="+" action="#{calculator.plus()}" update="input"></p:commandButton>
+        </p:column>
+       </p:row>
+       <p:row>
+        <p:column>
+         <p:commandButton value="0" action="#{calculator.number(0)}" update="input"></p:commandButton>
+        </p:column>
+        <p:column>
+        </p:column>
+        <p:column>
+        </p:column>
+        <p:column>
+        </p:column>
+
+
+       </p:row>
+      </p:panelGrid>
+     </h:form> 
+    </ui:define>
+
+   </ui:composition>
+   
+   
+
+
+  </h:body>
+
+ </f:view>
+</html>
+
+
+
