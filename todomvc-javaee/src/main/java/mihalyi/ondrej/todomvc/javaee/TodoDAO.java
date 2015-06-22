@@ -19,14 +19,22 @@ public class TodoDAO {
     EntityManager em;
     
     public List<TodoItem> getAllTodos() {
-        TypedQuery<TodoItem> query = em.createNamedQuery("allTodoItems", TodoItem.class);
-        return query.getResultList();
+        return getAllTodosQuery().getResultList();
+    }
+    
+    public TypedQuery<TodoItem> getAllTodosQuery() {
+     String queryText = "select t from TodoItem t where t.title like '%101%'";
+        return em.createQuery(queryText, TodoItem.class);
     }
     
     public List<TodoItem> getAllTodosWithContent() {
         TypedQuery<TodoItem> query = em.createNamedQuery("allTodoItemsWith", TodoItem.class);
         return query.getResultList();
     }
+
+ public TodoItem getTodo(Long id) {
+  return em.find(TodoItem.class, id);
+ }
     
     public static class Result {
         TodoItem item;

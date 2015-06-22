@@ -1,6 +1,7 @@
 package mihalyi.ondrej.todomvc.javaee;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -19,6 +20,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import org.eclipse.persistence.annotations.CloneCopyPolicy;
@@ -47,6 +50,13 @@ public class TodoItem implements Serializable {
     
     @Transient
     private int notesCount;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created;
+    
+    private String creator;
+    
+    private int priority;
 
     public void setNotesCount(int notesCount) {
         this.notesCount = notesCount;
@@ -97,5 +107,29 @@ public class TodoItem implements Serializable {
         this.notes = notes;
     }
 
+ public Date getCreated() {
+  return created;
+ }
 
+ public void setCreated(Date created) {
+  this.created = created;
+ }
+
+ public String getCreator() {
+  return creator;
+ }
+
+ public void setCreator(String creator) {
+  this.creator = creator;
+ }
+
+ public int getPriority() {
+  return priority;
+ }
+
+ public void setPriority(int priority) {
+  this.priority = priority;
+ }
+
+    
 }

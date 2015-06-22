@@ -8,9 +8,11 @@ package mihalyi.ondrej.todomvc.javaee;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.Valid;
@@ -21,7 +23,7 @@ import javax.validation.constraints.Size;
  *
  * @author ondro
  */
-@RequestScoped
+@ViewScoped
 @Named("app")
 public class Application implements Serializable {
 
@@ -33,7 +35,13 @@ public class Application implements Serializable {
  
  @Inject
  private TodoEditContext todoEditContext;
+ 
+ @Inject
+ TodosLazyDataModel lazyTodos;
 
+ @Inject
+ ApplicationStartup start;
+        
  @Size(min = 1)
  private String title = "";
 
@@ -42,11 +50,16 @@ public class Application implements Serializable {
 
  @PostConstruct
  public void init() {
+  start.fillDatabase();
   todos = repository.getAllTodos(true);
  }
 
  public List<TodoItem> getTodos() {
   return todos;
+ }
+ 
+ public TodosLazyDataModel getTodosLazy() {
+  return lazyTodos;
  }
 
  public void createNew() {
@@ -97,5 +110,12 @@ public class Application implements Serializable {
   todoEditContext.setCreatingTodo(creatingTodo);
  }
  
+ public String getCompletedText(TodoItem item) {
+  return item.isCompleted() ? "Completed" : "Active";
+ }
  
+ public boolean filterByName(Object value, Object filter, Locale locale) {
+   return value.equals(filter);
+ }
+
 }

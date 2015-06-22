@@ -1,6 +1,7 @@
 package mihalyi.ondrej.todomvc.javaee;
 
 import java.util.List;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -44,5 +45,20 @@ public class DBRepository {
     private boolean valid(TodoItem item) {
         return true;
     }
+
+ public List<TodoItem> getAllTodos(int first, int pageSize) {
+  Logger.getLogger(this.getClass().getName()).warning("Running query for first=" + first + ", pageSize=" + pageSize);
+  return todoDbAccess.getAllTodosQuery()
+          .setFirstResult(first).setMaxResults(pageSize)
+          .getResultList();
+ }
+ 
+ public int getAllTodosSize() {
+  return todoDbAccess.getAllTodos().size();
+ }
+
+ public TodoItem getTodo(Long id) {
+  return todoDbAccess.getTodo(id);
+ }
     
 }

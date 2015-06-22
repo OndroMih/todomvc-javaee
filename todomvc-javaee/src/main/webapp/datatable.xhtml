@@ -10,30 +10,77 @@
   <title>Moja stranka</title>
  </h:head>
  <h:body>
-  <p:dataTable id="basic" rendered="false" value="#{source.data}" var="row">
-   <p:column headerText="NAME" sortBy="#{row.name}">
-    <p:inputText value="#{row.name}"/>
+  <h:form>
+  <p:dataTable id="nonlazy" rendered="true" value="#{app.todos}" var="row"
+               rows="10"
+               paginator="true"
+               rowsPerPageTemplate="5,10,100,1000"
+               paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+   <f:facet name="header">
+        Non-lazy
+        <p:calendar />
+    </f:facet>
+   
+   <p:column sortBy="#{row.completed}">
+    <f:facet name="header">
+     <p:commandButton value="COMPLETED"/>
+    </f:facet>
+    <h:outputText value="#{row.completed}">
+     <f:converter converterId="completed"/>
+    </h:outputText>
    </p:column>
-   <p:column headerText="SIZE">
-    #{row.size}
+   <p:column headerText="NAME" filterBy="#{row.title}" filterMatchMode="contains"
+             sortBy="#{row.title}">
+    <f:facet name="filter">
+     <p:outputLabel for="filter" value="Filter:"/>
+     <p:inputText id="filter"/>
+    </f:facet>
+    
+    <h:outputText value="#{row.title}"/>
+   </p:column>
+   <p:column headerText="CREATE">
+    <h:outputText value="#{row.created}">
+     <f:convertDateTime type="date" dateStyle="medium" locale="sk"/>
+    </h:outputText>
+   </p:column>
+   <p:column headerText="CREATOR">
+    <h:outputText value="#{row.creator}"/>
+   </p:column>
+   <p:column headerText="PRIORITY" sortBy="#{row.priority}">
+    <h:outputText value="#{row.priority}"/>
    </p:column>
   </p:dataTable>
-  
-  <p:dataTable id="livescroll" rendered="true" value="#{source.data}" var="row" 
-               scrollRows="1000" scrollable="true" liveScroll="true" scrollHeight="500">
+   
+   <p:dataTable id="lazy" rendered="false" value="#{app.todosLazy}" var="row"
+               rows="10"
+               paginator="true"
+               rowsPerPageTemplate="5,10,100,1000"
+               paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+               lazy="true" selectionMode="single">
+   <f:facet name="header">
+        Lazy
+    </f:facet>
+   <p:column headerText="COMPLETED" >
+    <h:outputText value="#{row.completed}">
+     <f:converter converterId="completed"/>
+    </h:outputText>
+   </p:column>
    <p:column headerText="NAME">
-    #{row.name}
+    <h:outputText value="#{row.title}"/>
    </p:column>
-   <p:column headerText="SIZE">
-    #{row.size}
+   <p:column headerText="CREATE">
+    <h:outputText value="#{row.created}">
+     <f:convertDateTime type="date" dateStyle="medium" locale="sk"/>
+    </h:outputText>
+   </p:column>
+   <p:column headerText="CREATOR">
+    <h:outputText value="#{row.creator}"/>
+   </p:column>
+   <p:column headerText="PRIORITY">
+    <h:outputText value="#{row.priority}"/>
    </p:column>
   </p:dataTable>
-  
-  <p:dataTable id="search" rendered="false" value="#{source.data}" var="row" widgetVar="dataTable" emptyMessage="No cars found with given criteria" >
-   <p:column headerText="NAME" filterBy="#{row.name}" filterMatchMode="contains">
-    #{row.name}
-   </p:column>
-  </p:dataTable>
+  </h:form>
  </h:body>
 </html>
 
