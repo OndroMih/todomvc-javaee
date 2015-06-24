@@ -1,5 +1,6 @@
 package mihalyi.ondrej.todomvc.javaee.test;
 
+import java.util.logging.Logger;
 import mihalyi.ondrej.todomvc.javaee.Calculator;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +15,8 @@ import org.junit.Ignore;
 public class CalculatorTest {
 
     private Calculator calculator;
+    
+    private Logger logger = Logger.getGlobal();
 
     @Before
     public void setUp() {
@@ -22,6 +25,7 @@ public class CalculatorTest {
 
     @Test
     public void pressing_numbers_works() {
+     logger.info("Start");
         calculator.number(1);
         calculator.number(3);
         calculator.number(5);

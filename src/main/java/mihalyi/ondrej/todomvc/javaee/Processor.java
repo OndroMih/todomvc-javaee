@@ -7,12 +7,14 @@ package mihalyi.ondrej.todomvc.javaee;
 
 import javax.ejb.Asynchronous;
 import javax.ejb.Stateless;
+import javax.enterprise.context.Dependent;
 
 /**
  *
  * @author ondro
  */
 @Stateless
+@Dependent
 public class Processor {
 
     @Asynchronous

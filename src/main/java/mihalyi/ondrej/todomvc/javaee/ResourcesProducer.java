@@ -5,7 +5,10 @@
  */
 package mihalyi.ondrej.todomvc.javaee;
 
+import javax.enterprise.context.Dependent;
+import javax.enterprise.inject.Alternative;
 import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -18,4 +21,11 @@ public class ResourcesProducer {
  @Produces
  @PersistenceContext(name = "todos")
  EntityManager em;
+ 
+ @Produces
+ @Dependent
+ @Alternative
+ public DBRepository createRepo() {
+  return new DBRepository();
+ }
 }

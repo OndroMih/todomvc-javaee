@@ -1,17 +1,16 @@
 package mihalyi.ondrej.todomvc.javaee;
 
 import java.util.Date;
-import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-@Singleton
-public class ApplicationStartup {
+@Stateless
+public class DefaultDataFiller {
  
  @Inject
  DBRepository todoDAO;
  
- @PostConstruct
  public void fillDatabase() {
   if (todoDAO.getAllTodos(false).isEmpty()) {
   for (int i = 0; i < 1000; i++) {

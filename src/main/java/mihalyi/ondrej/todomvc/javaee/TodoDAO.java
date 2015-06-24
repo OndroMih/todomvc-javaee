@@ -6,6 +6,7 @@
 package mihalyi.ondrej.todomvc.javaee;
 
 import java.util.List;
+import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -14,6 +15,7 @@ import javax.persistence.TypedQuery;
  *
  * @author ondro
  */
+@Dependent
 public class TodoDAO {
     @PersistenceContext(name = "todos")
     EntityManager em;
@@ -23,8 +25,7 @@ public class TodoDAO {
     }
     
     public TypedQuery<TodoItem> getAllTodosQuery() {
-     String queryText = "select t from TodoItem t where t.title like '%101%'";
-        return em.createQuery(queryText, TodoItem.class);
+        return em.createNamedQuery("allTodoItems", TodoItem.class);
     }
     
     public List<TodoItem> getAllTodosWithContent() {

@@ -3,9 +3,14 @@ package mihalyi.ondrej.todomvc.javaee;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
+import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
+import javax.persistence.TypedQuery;
 
 @Stateless
+@Dependent
 public class DBRepository {
     @Inject
     private TodoDAO todoDbAccess;

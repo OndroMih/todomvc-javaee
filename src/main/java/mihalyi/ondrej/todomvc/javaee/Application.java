@@ -6,17 +6,18 @@
 package mihalyi.ondrej.todomvc.javaee;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.Instance;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -28,10 +29,14 @@ import javax.validation.constraints.Size;
 public class Application implements Serializable {
 
  @Inject
+ transient
+ Logger logger;
+ 
+ @Inject
  private RepositoryFacade repoFacade;
 
  @Inject
- private DBRepository repository;
+ private Instance<DBRepository> repositoryFactory;
  
  @Inject
  private TodoEditContext todoEditContext;
@@ -40,7 +45,7 @@ public class Application implements Serializable {
  TodosLazyDataModel lazyTodos;
 
  @Inject
- ApplicationStartup start;
+ DefaultDataFiller start;
         
  @Size(min = 1)
  private String title = "";
@@ -50,8 +55,10 @@ public class Application implements Serializable {
 
  @PostConstruct
  public void init() {
+  logger.info("Init: Robim init...");
   start.fillDatabase();
-  todos = repository.getAllTodos(true);
+  todos = new ArrayList<>();
+
  }
 
  public List<TodoItem> getTodos() {

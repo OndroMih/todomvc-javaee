@@ -7,6 +7,7 @@ package mihalyi.ondrej.todomvc.javaee;
 
 import java.util.List;
 import java.util.Map;
+import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
@@ -15,6 +16,7 @@ import org.primefaces.model.SortOrder;
  *
  * @author ondro
  */
+@Dependent
 public class TodosLazyDataModel extends LazyDataModel<TodoItem>{
 
  @Inject
