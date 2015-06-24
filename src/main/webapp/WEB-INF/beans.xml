@@ -2,8 +2,13 @@
 <beans xmlns="http://java.sun.com/xml/ns/javaee"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/beans_1_0.xsd"
-    bean-discovery-mode="all">
+ >
  <decorators>
+  <class>mihalyi.ondrej.todomvc.javaee.cdiexercises.ClassNameDecorator</class>
+  <class>mihalyi.ondrej.todomvc.javaee.cdiexercises.WelcomeDecorator</class>
   <class>mihalyi.ondrej.todomvc.javaee.cdiexamples.decorator.XmlDecorator</class>
  </decorators>
+ <interceptors>
+  <class>mihalyi.ondrej.todomvc.javaee.cdiexercises.LoggingInterceptor</class>
+ </interceptors>
 </beans>

@@ -5,7 +5,7 @@ import javax.ejb.EJBContext;
 import javax.ejb.Stateless;
 
 @Stateless
-public class UserNameStringProvider extends StringProvider {
+public class UserNameStringProvider implements StringProvider {
 
  @Resource
  private EJBContext context;

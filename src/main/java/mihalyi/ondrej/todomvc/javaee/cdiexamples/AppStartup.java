@@ -17,4 +17,5 @@ public class AppStartup {
  public void init() {
   startUpEvent.fire(new StartUpEvent());
  }
+
 }
