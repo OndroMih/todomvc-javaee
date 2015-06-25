@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-Generate WS client</actionName>
+            <displayName>Generate WS client</displayName>
+            <goals>
+                <goal>compile</goal>
+            </goals>
+            <properties>
+                <Env.MAVEN_OPTS>"-Djavax.xml.accessExternalSchema=all"</Env.MAVEN_OPTS>
+            </properties>
+        </action>
+    </actions>

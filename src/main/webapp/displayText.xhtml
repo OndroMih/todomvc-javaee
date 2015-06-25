@@ -6,6 +6,7 @@
                 xmlns:p="http://primefaces.org/ui">
  <h:panelGroup id="todos">
   <p:outputPanel id="todoPanel" autoUpdate="true">
+   Pocet todo: #{app.todosCount}
    <p:dataList id="todoList" value="#{app.todos}" var="todo" styleClass="todo-list" >
     <h:panelGroup id="todo" layout="block" styleClass="#{todo.completed ? 'completed' : ''}">
      <h:selectBooleanCheckbox value="#{todo.completed}" styleClass="toggle" >

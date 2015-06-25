@@ -15,7 +15,7 @@ public class LoggingInterceptor {
  
  @AroundInvoke
  public Object invoke(InvocationContext context) throws Exception {
-  logger.info("Volana metoda " + context.getMethod().getName() + ", parameters: " + context.getMethod().getParameters());
+  logger.info("Volana metoda " + context.getMethod().getDeclaringClass().getSimpleName() + "." + context.getMethod().getName() + ", parameters: " + context.getMethod().getParameters());
   return context.proceed();
  }
 }

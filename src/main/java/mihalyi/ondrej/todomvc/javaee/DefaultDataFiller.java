@@ -13,7 +13,7 @@ public class DefaultDataFiller {
  
  public void fillDatabase() {
   if (todoDAO.getAllTodos(false).isEmpty()) {
-  for (int i = 0; i < 1000; i++) {
+  for (int i = 0; i < 100; i++) {
    TodoItem item = new TodoItem();
    item.setCompleted(i % 2 == 0 ? true : false);
    item.setCreated(new Date());

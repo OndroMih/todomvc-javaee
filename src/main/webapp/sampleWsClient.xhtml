@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+ <f:view contentType="text/html">
+  <h:head>
+   <f:facet name="first">
+    <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Sample Ws client</title>
+    <link rel="stylesheet" href="bower_components/todomvc-common/base.css"/>
+    <!-- CSS overrides - remove if you don't need it -->
+    <link rel="stylesheet" href="css/app.css"/>
+   </f:facet>
+  </h:head>
+
+  <h:body>
+   Mame nejake todos? #{sampleWsClient.areThereAnyTodos()}
+  </h:body>
+
+ </f:view>
+</html>
+
+
+

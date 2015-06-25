@@ -34,10 +34,10 @@ public class Application implements Serializable {
  
  @Inject
  private RepositoryFacade repoFacade;
-
- @Inject
- private Instance<DBRepository> repositoryFactory;
  
+ @Inject
+ private DBRepository repository;
+
  @Inject
  private TodoEditContext todoEditContext;
  
@@ -57,12 +57,15 @@ public class Application implements Serializable {
  public void init() {
   logger.info("Init: Robim init...");
   start.fillDatabase();
-  todos = new ArrayList<>();
-
+  todos = repository.getAllTodos(false);
  }
 
  public List<TodoItem> getTodos() {
   return todos;
+ }
+ 
+ public int getTodosCount() {
+  return 0;
  }
  
  public TodosLazyDataModel getTodosLazy() {
