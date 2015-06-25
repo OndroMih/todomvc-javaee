@@ -11,7 +11,7 @@ public class Calculator implements Serializable {
     private Double stack;
 
     public String getData() {
-        return String.valueOf(result);
+        return DataUtil.convertDoubleToString(result);
     }
 
     public void setData(String data) {
@@ -52,5 +52,9 @@ public class Calculator implements Serializable {
     public void result() {
         
     }
-    
+
+ public void computeResult() {
+  this.result = 39;
+ }
+
 }

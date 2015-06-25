@@ -7,6 +7,7 @@ import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
+import javax.jws.WebService;
 import javax.persistence.TypedQuery;
 
 @Stateless

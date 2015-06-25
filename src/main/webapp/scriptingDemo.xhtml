@@ -11,7 +11,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>Sample Ws client</title>
+    <title>Scripting</title>
     <link rel="stylesheet" href="bower_components/todomvc-common/base.css"/>
     <!-- CSS overrides - remove if you don't need it -->
     <link rel="stylesheet" href="css/app.css"/>
@@ -19,8 +19,14 @@
   </h:head>
 
   <h:body>
-   Mame nejake todos? #{sampleWsClient.areThereAnyTodos()}
-   Title: #{sampleWsClient.firstTodoTitle}
+   <p>
+   <h1>Vysledok Groovy formule</h1>
+   #{app.computeGroovyFormula()}
+  </p>
+   <p>
+   <h1>Vysledok Javascript formule</h1>
+   #{app.computeJavacriptFormula()}
+  </p>
   </h:body>
 
  </f:view>

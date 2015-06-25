@@ -1,6 +1,5 @@
 package mihalyi.ondrej.todomvc.javaee.test;
 
-import java.util.logging.Logger;
 import mihalyi.ondrej.todomvc.javaee.Calculator;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,13 +10,10 @@ import org.junit.Ignore;
  *
  * @author ondro
  */
-@Ignore
 public class CalculatorTest {
 
     private Calculator calculator;
     
-    private Logger logger = Logger.getGlobal();
-
     @Before
     public void setUp() {
         calculator = new Calculator();
@@ -25,13 +21,16 @@ public class CalculatorTest {
 
     @Test
     public void pressing_numbers_works() {
-     logger.info("Start");
-        calculator.number(1);
-        calculator.number(3);
-        calculator.number(5);
-        calculator.number(7);
-        assertEquals("Calculator result", "1357.0", calculator.getData());
+        pressNumber(1);
+        pressNumber(3);
+        pressNumber(5);
+        pressNumber(7);
+        calculationResultIs("1357.0", calculationResult());
     }
+
+ protected String calculationResult() {
+  return calculator.getData();
+ }
 
     @Test
     public void plus_operation_works() {
@@ -39,7 +38,8 @@ public class CalculatorTest {
         calculator.number(3);
         calculator.plus();
         calculator.number(3);
-        assertEquals("Calculator result 13 + 3", "16", calculator.getData());
+        calculator.computeResult();
+        assertEquals("Calculator result 13 + 3", "16.0", calculationResult());
     }
 
     @Test
@@ -48,7 +48,8 @@ public class CalculatorTest {
         calculator.number(3);
         calculator.multiply();
         calculator.number(3);
-        assertEquals("Calculator result 13 * 3", "39", calculator.getData());
+        calculator.computeResult();
+        assertEquals("Calculator result 13 * 3", "39.0", calculationResult());
     }
     
     @Test
@@ -57,6 +58,15 @@ public class CalculatorTest {
         calculator.number(0);
         calculator.divide();
         calculator.number(2);
-        assertEquals("Calculator result 10 / 2", "5", calculator.getData());
+        calculator.computeResult();
+        assertEquals("Calculator result 10 / 2", "5.0", calculationResult());
     }
+
+ private void pressNumber(int i) {
+  calculator.number(i);
+ }
+
+ private void calculationResultIs(String value, String calculationResult) {
+  assertEquals("Calculator result", value, calculationResult);
+ }
 }

@@ -3,11 +3,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
  <h:head>
   <title>Template</title>
  </h:head>
  <h:body>
+  <p:ajaxStatus>
+   <f:facet name="start">
+    <div style="opacity: 0.5; background: white; width:100%; height: 100%; padding: 100px; position: fixed; z-index: 100 !important; left: 0; top: 0">
+     </div>
+     <div style="padding: 10px; background: white; z-index: 101 !important; position:fixed; left: 0; top: 0; margin: 100px; border: solid blue 2px">Please wait to finish action...
+    </div>
+   </f:facet>
+   <f:facet name="complete">
+    
+   </f:facet>
+  </p:ajaxStatus>
   <h:panelGroup layout="block" style="height: 20px; background-color: blue; width: 100%">
    Aplikacia TODO
   </h:panelGroup>

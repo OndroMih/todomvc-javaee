@@ -10,12 +10,12 @@
    <p:dataList id="todoList" value="#{app.todos}" var="todo" styleClass="todo-list" >
     <h:panelGroup id="todo" layout="block" styleClass="#{todo.completed ? 'completed' : ''}">
      <h:selectBooleanCheckbox value="#{todo.completed}" styleClass="toggle" >
-      <p:ajax listener="#{app.saveNew(todo)}" update="todo"/>
+      <p:ajax listener="#{app.save(todo)}" update="todo"/>
      </h:selectBooleanCheckbox>
      <p:inplace editor="true" styleClass="label" event="click">
       <p:inputText value="#{todo.title}">
       </p:inputText>
-      <p:ajax event="save" listener="#{app.saveNew(todo)}"/>
+      <p:ajax event="save" listener="#{app.save(todo)}"/>
      </p:inplace>
     </h:panelGroup>
    </p:dataList>

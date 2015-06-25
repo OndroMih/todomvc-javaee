@@ -1,5 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><xs:schema xmlns:tns="http://ws.wsexamples.javaee.todomvc.ondrej.mihalyi/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.wsexamples.javaee.todomvc.ondrej.mihalyi/">
 
+<xs:element name="allItems" type="tns:allTodosResult"/>
+
+<xs:element name="getAllTodos" type="tns:getAllTodos"/>
+
+<xs:element name="getAllTodosResponse" type="tns:getAllTodosResponse"/>
+
 <xs:element name="getAllTodosSize" type="tns:getAllTodosSize"/>
 
 <xs:element name="getAllTodosSizeResponse" type="tns:getAllTodosSizeResponse"/>
@@ -10,7 +16,44 @@
 
 <xs:complexType name="getAllTodosSizeResponse">
 <xs:sequence>
-<xs:element name="return" type="xs:int"/>
+<xs:element name="size" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllTodos">
+<xs:sequence>
+<xs:element name="arg0" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllTodosResponse">
+<xs:sequence>
+<xs:element name="allTodos" type="tns:allTodosResult" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="allTodosResult">
+<xs:sequence>
+<xs:element name="todos" type="tns:todoItem" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="todoItem">
+<xs:sequence>
+<xs:element name="completed" type="xs:boolean"/>
+<xs:element name="created" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="creator" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="notes" type="tns:todoNote" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="priority" type="xs:int"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="todoNote">
+<xs:sequence>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

@@ -1,6 +1,7 @@
 package mihalyi.ondrej.todomvc.javaee.wsexamples.rest;
 
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -15,7 +16,7 @@ public class TodosResource {
  @GET
  @Produces(MediaType.TEXT_HTML)
  public String getAllTodos() {
-  return "Number of todos: " + repo.getAllTodosSize();
+  return "<html><body>Number of todos: " + repo.getAllTodosSize() + "</body></html>";
  }
  
 }

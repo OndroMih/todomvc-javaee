@@ -10,15 +10,34 @@
 <message name="getAllTodosSizeResponse">
 <part name="parameters" element="tns:getAllTodosSizeResponse"/>
 </message>
+<message name="getAllTodos">
+<part name="parameters" element="tns:getAllTodos"/>
+</message>
+<message name="getAllTodosResponse">
+<part name="parameters" element="tns:getAllTodosResponse"/>
+</message>
 <portType name="SampleWebService">
 <operation name="getAllTodosSize">
 <input wsam:Action="http://ws.wsexamples.javaee.todomvc.ondrej.mihalyi/SampleWebService/getAllTodosSizeRequest" message="tns:getAllTodosSize"/>
 <output wsam:Action="http://ws.wsexamples.javaee.todomvc.ondrej.mihalyi/SampleWebService/getAllTodosSizeResponse" message="tns:getAllTodosSizeResponse"/>
 </operation>
+<operation name="getAllTodos">
+<input wsam:Action="http://ws.wsexamples.javaee.todomvc.ondrej.mihalyi/SampleWebService/getAllTodosRequest" message="tns:getAllTodos"/>
+<output wsam:Action="http://ws.wsexamples.javaee.todomvc.ondrej.mihalyi/SampleWebService/getAllTodosResponse" message="tns:getAllTodosResponse"/>
+</operation>
 </portType>
 <binding name="SampleWebServicePortBinding" type="tns:SampleWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
 <operation name="getAllTodosSize">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getAllTodos">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
